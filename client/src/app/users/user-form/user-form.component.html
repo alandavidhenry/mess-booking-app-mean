@@ -1,0 +1,105 @@
+<form class="user-form" autocomplete="off" [formGroup]="userForm" (ngSubmit)="submitForm()">
+
+    <!-- Service number -->
+    <div class="form-floating mb-3">
+      <input class="form-control" type="text" id="serviceNumber" formControlName="serviceNumber" placeholder="Service number" required [ngClass]="{'is-invalid': serviceNumber.invalid && (serviceNumber.dirty || serviceNumber.touched)}">
+      <label for="serviceNumber">Service number</label>
+      <div *ngIf="serviceNumber.invalid && (serviceNumber.dirty || serviceNumber.touched)" class="invalid-feedback">
+        <span *ngIf="serviceNumber.errors?.['required']">
+          Service number is required.
+        </span>
+        <span *ngIf="serviceNumber.errors?.['minlength'] || serviceNumber.errors?.['maxlength']">
+          Service number must be 8 characters long.
+        </span>
+        <span *ngIf="serviceNumber.errors?.['pattern']">
+          Service number must be in the format.
+        </span>
+      </div>
+    </div>
+
+    <!-- Rank -->
+    <div class="form-floating mb-3">
+      <select class="form-select" id="rank" formControlName="rank" placeholder="Rank" required [ngClass]="{'is-invalid': rank.invalid && (rank.dirty || rank.touched)}">
+        <option value="LSgt">LSgt</option>
+        <option value="Sgt">Sgt</option>
+        <option value="CSgt">CSgt</option>
+        <option value="WO2">WO2</option>
+        <option value="WO1">WO1</option>
+      </select>
+      <label for="rank">Rank</label>
+      <div *ngIf="rank.invalid && (rank.dirty || rank.touched)" class="invalid-feedback">
+        <span *ngIf="rank.errors?.['required']">
+          Rank is required.
+        </span>
+      </div>
+    </div>
+
+    <!-- First name -->
+    <div class="form-floating mb-3">
+      <input class="form-control" type="text" id="firstName" formControlName="firstName" placeholder="First name" required [ngClass]="{'is-invalid': firstName.invalid && (firstName.dirty || firstName.touched)}">
+      <label for="firstName">First name</label>
+      <div *ngIf="firstName.invalid && (firstName.dirty || firstName.touched)" class="invalid-feedback">
+        <span *ngIf="firstName.errors?.['required']">
+          First name is required.
+        </span>
+        <span *ngIf="firstName.errors?.['minlength']">
+          First name must be at least 2 characters long.
+        </span>
+      </div>
+    </div>
+
+    <!-- Last name -->
+    <div class="form-floating mb-3">
+      <input class="form-control" type="text" id="lastName" formControlName="lastName" placeholder="Last name" required [ngClass]="{'is-invalid':lastName.invalid && (lastName.dirty || lastName.touched)}">
+      <label for="lastName">Last name</label>
+      <div *ngIf="lastName.invalid && (lastName.dirty || lastName.touched)" class="invalid-feedback">
+        <span *ngIf="lastName.errors?.['required']">
+          Last name is required.
+        </span>
+        <span *ngIf="lastName.errors?.['minlength']">
+          Last name must be at least 2 characters long.
+        </span>
+      </div>
+    </div>
+
+    <!-- Unit -->
+    <div class="form-floating mb-3">
+      <input class="form-control" type="text" id="unit" formControlName="unit" placeholder="Unit" required [ngClass]="{'is-invalid': unit.invalid && (unit.dirty || unit.touched)}">
+      <label for="unit">Unit</label>
+      <div *ngIf="unit.invalid && (unit.dirty || unit.touched)" class="invalid-feedback">
+        <span *ngIf="unit.errors?.['required']">
+          Unit is required.
+        </span>
+      </div>
+    </div>
+
+    <!-- Contact number -->
+    <div class="form-floating mb-3">
+      <input class="form-control" type="text" id="contactNumber" formControlName="contactNumber" placeholder="Contact number" required [ngClass]="{'is-invalid': contactNumber.invalid && (contactNumber.dirty || contactNumber.touched)}">
+      <label for="contactNumber">Contact number</label>
+      <div *ngIf="contactNumber.invalid && (contactNumber.dirty || contactNumber.touched)" class="invalid-feedback">
+        <span *ngIf="contactNumber.errors?.['required']">
+          Contact number is required.
+        </span>
+        <span *ngIf="contactNumber.errors?.['minlength']">
+          Contact number must be at least 8 characters long.
+        </span>
+      </div>
+    </div>
+    
+    <!-- Email -->
+    <div class="form-floating mb-3">
+      <input class="form-control" type="text" id="email" formControlName="email" placeholder="Email" required [ngClass]="{'is-invalid': email.invalid && (email.dirty || email.touched)}">
+      <label for="email">Email</label>
+      <div *ngIf="email.invalid && (email.dirty || email.touched)" class="invalid-feedback">
+        <span *ngIf="email.errors?.['required']">
+          Email is required.
+        </span>
+        <span *ngIf="email.errors?.['minlength']">
+          Email must be at least 8 characters long.
+        </span>
+      </div>
+    </div>
+
+    <button class="btn btn-primary" type="submit" [disabled]="userForm.invalid">Add</button>
+  </form>
